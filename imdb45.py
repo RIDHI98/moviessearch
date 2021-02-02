@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import re
-
+#code can search info regarding top 250 movies available in imdb charts
 
 url = 'http://www.imdb.com/chart/top'
 response = requests.get(url)
