@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import re
 
-# Download IMDB's Top 250 data
+
 url = 'http://www.imdb.com/chart/top'
 response = requests.get(url)
 soup = BeautifulSoup(response.text, 'lxml')
@@ -15,9 +15,8 @@ votes = [b.attrs.get('data-value') for b in soup.select('td.ratingColumn strong'
 
 imdb = []
 
-# Store each item into dictionary (data), then put those into a list (imdb)
 for index in range(0, len(movies)):
-    # Seperate movie into: 'place', 'title', 'year'
+  
     movie_string = movies[index].get_text()
     movie = (' '.join(movie_string.split()).replace('.', ''))
     movie_title = movie[len(str(index))+1:-7]
@@ -32,8 +31,7 @@ for index in range(0, len(movies)):
             "link": links[index]}
     imdb.append(data)
 
-# for item in imdb:
-#     print(item['place'], item['movie_title'], item['rating'])
+
 
 #print(imdb)
 movie_name=raw_input("Enter the movie name to search: ")
